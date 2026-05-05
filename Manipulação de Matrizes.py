@@ -1,17 +1,27 @@
 import numpy as np
 
-matriz = np.random.randint(1, 51, (5, 5))
+def processar_dados_cientificos():
+    matriz_a = np.random.randint(1, 10, (3, 3))
+    matriz_b = np.eye(3) * 5  
+    
+    print("Matriz A:\n", matriz_a)
+    print("\nMatriz B (Diagonal):\n", matriz_b)
 
-print("Matriz Original:")
-print(matriz)
+    resultado_dot = np.dot(matriz_a, matriz_b)
+    print("\nResultado da Multiplicação de Matrizes (A . B):")
+    print(resultado_dot)
 
-print(f"\nSoma total: {np.sum(matriz)}")
-print(f"Média dos elementos: {np.mean(matriz)}")
+    min_val = matriz_a.min()
+    max_val = matriz_a.max()
+    matriz_normalizada = (matriz_a - min_val) / (max_val - min_val)
+    
+    print("\nMatriz A Normalizada (Valores entre 0 e 1):")
+    print(np.round(matriz_normalizada, 2))
 
-matriz_filtrada = np.where(matriz > 30, 0, matriz)
+    np.save('resultado_processamento.npy', resultado_dot)
+    print("\n[LOG]: Resultados exportados com sucesso.")
 
-print("\nMatriz modificada (Valores > 30 viraram 0):")
-print(matriz_filtrada)
-
-print("\nMatriz Transposta:")
-print(matriz.T)
+if __name__ == "__main__":
+    processar_dados_cientificos()
+    
+ # Alteração para o Pull Request
